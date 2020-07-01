@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route, Redirect, Link } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import Home from '../components/pages/Home/Home';
 import Orereo from '../components/pages/Orereo/Orereo';
 import NotFound from '../components/pages/NotFound/NotFound';

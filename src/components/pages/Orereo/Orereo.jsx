@@ -1,39 +1,80 @@
 import React, { Component } from 'react';
 import OrereoStyle from './OrereoStyle';
 import StyledComponent from '../../core/StyledComponent';
+import Button from '@material-ui/core/Button';
+import o from '../../../static/images/Oreo/o.png';
+import re from '../../../static/images/Oreo/re.png';
 
-import { makeStyles, useTheme } from '@material-ui/core/styles';
-import Drawer from '@material-ui/core/Drawer';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import List from '@material-ui/core/List';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Typography from '@material-ui/core/Typography';
-import Divider from '@material-ui/core/Divider';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
+import Navigation from '../../topics/NavigationBar/NavigationBar';
 
 export default class Orereo extends Component {
   constructor() {
     super();
-    this.state = {};
+    this.state = { oreo: [] };
+    this.oreoElements = [];
   }
 
   componentDidMount() {}
+
+  addO = () => {
+    this.setState({
+      oreo: [...this.state.oreo].concat(
+        <div key={`${this.state.oreo.length}`}>
+          <img
+            src={o}
+            alt="logo"
+            style={{
+              width: 240,
+              height: 160,
+              position: 'absolute',
+              top: 650 - this.state.oreo.length * 20,
+              left: window.innerWidth / 2 - 120,
+            }}
+          />
+        </div>
+      ),
+    });
+  };
+  addRE = () => {
+    this.setState({
+      oreo: [...this.state.oreo].concat(
+        <div key={`${this.state.oreo.length}`}>
+          <img
+            src={re}
+            alt="logo"
+            style={{
+              width: 240,
+              height: 160,
+              position: 'absolute',
+              top: 650 - this.state.oreo.length * 20,
+              left: window.innerWidth / 2 - 120,
+            }}
+          />
+        </div>
+      ),
+    });
+  };
 
   render() {
     return (
       <StyledComponent styleMap={OrereoStyle}>
         {(useStyles) => {
           const classes = useStyles(this.props);
-          return <div className={classes.root}>Orereo</div>;
+          return (
+            <div className={classes.main}>
+              <h1 className={classes.header}>Orereo</h1>
+              <Navigation />
+              {this.state.oreo}
+              <div className={classes.button_group}>
+                <Button variant="contained" color="primary" onClick={this.addO}>
+                  add O
+                </Button>
+                <Button variant="contained" color="primary" onClick={this.addRE}>
+                  add RE
+                </Button>
+              </div>
+            </div>
+          );
         }}
       </StyledComponent>
     );
