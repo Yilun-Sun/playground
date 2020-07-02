@@ -14,7 +14,7 @@ const styles = {
     },
     header: {
         position: 'abosulute',
-        textAlign: 'center'
+        textAlign: 'center',
     },
     media: {
         height: 140,

@@ -30,6 +30,7 @@ export default class Orereo extends Component {
               top: 650 - this.state.oreo.length * 20,
               left: window.innerWidth / 2 - 120,
             }}
+            draggable="false"
           />
         </div>
       ),
@@ -49,6 +50,7 @@ export default class Orereo extends Component {
               top: 650 - this.state.oreo.length * 20,
               left: window.innerWidth / 2 - 120,
             }}
+            draggable="false"
           />
         </div>
       ),
