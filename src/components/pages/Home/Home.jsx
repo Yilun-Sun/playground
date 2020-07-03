@@ -11,6 +11,9 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
 import contemplativeReptile from '../../../static/images/Cards/contemplative-reptile.jpg';
+import orereoImg from '../../../static/images/Cards/orereo.png';
+import orereoGif from '../../../static/images/Cards/orereo.gif';
+import gameOfLifeImg from '../../../static/images/Cards/game_of_life.png';
 
 export default class Home extends Component {
   constructor() {
@@ -26,7 +29,7 @@ export default class Home extends Component {
         {(useStyles) => {
           const classes = useStyles(this.props);
           return (
-            <div>
+            <div className={classes.main}>
               <h1 className={classes.header}>Playground</h1>
               <ul className={classes.stage_select_list}>
                 <li className={classes.stage_select_list_item}>
@@ -35,13 +38,13 @@ export default class Home extends Component {
                       <CardMedia
                         component="img"
                         className={classes.media}
-                        src={contemplativeReptile}
+                        src={orereoGif}
                         alt={'contemplativeReptile'}
                         title="Contemplative Reptile"
                       />
                       <CardContent>
                         <Typography gutterBottom variant="h5" component="h2">
-                          Lizard
+                          Orereo
                         </Typography>
                         <Typography variant="body2" color="textSecondary" component="p">
                           Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across
@@ -65,13 +68,13 @@ export default class Home extends Component {
                       <CardMedia
                         component="img"
                         className={classes.media}
-                        src={contemplativeReptile}
+                        src={gameOfLifeImg}
                         alt={'contemplativeReptile'}
                         title="Contemplative Reptile"
                       />
                       <CardContent>
                         <Typography gutterBottom variant="h5" component="h2">
-                          Lizard
+                          Conway's Game of Life
                         </Typography>
                         <Typography variant="body2" color="textSecondary" component="p">
                           Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across

@@ -2,19 +2,18 @@ const topNavBarHeight = '64px';
 const leftToolboxWidth = '200px';
 
 const toolBoxColor = '#828282';
-const defaultBackgroundColor = '#333333';
+const defaultBackgroundColor = '#f2f9ff';
 
 const styles = {
     main: {
-        width: '100vw',
-        height: '100vh',
         backgroundColor: defaultBackgroundColor,
     },
     header: {
-        textAlign: 'center'
+        margin: '0px 0px 20px 0px',
+        textAlign: 'center',
     },
     media: {
-        height: 140,
+        height: 240,
     },
     stage_select_list: {
         display: "grid",
@@ -23,7 +22,7 @@ const styles = {
         gridGap: "30px"
     },
     stage_select_list_item: {
-        background: "rgba(255, 255, 255, 0.95)",
+        background: defaultBackgroundColor,
         display: "grid",
         gridTemplateColumns: "480px 2.5fr",
         position: "relative"
