@@ -21,6 +21,9 @@ export default class Home extends Component {
     this.state = {};
   }
 
+  // TODO:
+  // 打开页面开启使用教程面板
+
   componentDidMount() {}
 
   render() {

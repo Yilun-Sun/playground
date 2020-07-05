@@ -3,6 +3,7 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import Home from '../components/pages/Home/Home';
 import Orereo from '../components/pages/Orereo/Orereo';
 import NotFound from '../components/pages/NotFound/NotFound';
+import VisualAlgo from '../components/pages/VisualAlgo/VisualAlgo';
 // import App from '../components/topics/app/App/App';
 import Navigation from '../components/topics/NavigationBar/NavigationBar';
 
@@ -21,6 +22,9 @@ const MainRoute = () => (
       </Route>
       <Route path="/notfound">
         <NotFound />
+      </Route>
+      <Route path="/visual-algo">
+        <VisualAlgo />
       </Route>
       <Route path="/">
         <Redirect to="/home" />

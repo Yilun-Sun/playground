@@ -43,6 +43,11 @@ const Navigation = () => {
           </Link>
         </MenuItem>
         <MenuItem onClick={handleClose}>
+          <Link to="/visual-algo" className={classes.link}>
+            Visual Algo
+          </Link>
+        </MenuItem>
+        <MenuItem onClick={handleClose}>
           <Link to="/notfound" className={classes.link}>
             NotFound
           </Link>
