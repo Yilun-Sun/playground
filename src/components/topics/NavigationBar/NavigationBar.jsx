@@ -33,7 +33,7 @@ const Navigation = () => {
       </IconButton>
       <Menu id="simple-menu" anchorEl={anchorEl} keepMounted open={Boolean(anchorEl)} onClose={handleClose}>
         <MenuItem onClick={handleClose}>
-          <Link to="/home" className={classes.link}>
+          <Link to="/playground" className={classes.link}>
             Home
           </Link>
         </MenuItem>
@@ -43,7 +43,7 @@ const Navigation = () => {
           </Link>
         </MenuItem>
         <MenuItem onClick={handleClose}>
-          <Link to="/visual-algo" className={classes.link}>
+          <Link to="/visual-sort-algo" className={classes.link}>
             Visual Algo
           </Link>
         </MenuItem>

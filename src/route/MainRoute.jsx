@@ -14,7 +14,7 @@ const MainRoute = () => (
     {/* A <Switch> looks through its children <Route>s and
         renders the first one that matches the current URL. */}
     <Switch>
-      <Route path="/home">
+      <Route path="/playground">
         <Home />
       </Route>
       <Route path="/orereo">
@@ -23,11 +23,11 @@ const MainRoute = () => (
       <Route path="/notfound">
         <NotFound />
       </Route>
-      <Route path="/visual-algo">
+      <Route path="/visual-sort-algo">
         <VisualAlgo />
       </Route>
       <Route path="/">
-        <Redirect to="/home" />
+        <Redirect to="/playground" />
       </Route>
     </Switch>
   </div>
