@@ -4,7 +4,7 @@ import StyledComponent from '../../core/StyledComponent';
 import Button from '@material-ui/core/Button';
 import Navigation from '../../topics/NavigationBar/NavigationBar';
 
-import paper, { Tool, Shape, Group, Point, PointText } from 'paper';
+import paper, { Shape, Group, Point, PointText } from 'paper';
 import Typography from '@material-ui/core/Typography';
 import Slider from '@material-ui/core/Slider';
 

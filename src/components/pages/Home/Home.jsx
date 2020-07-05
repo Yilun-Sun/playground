@@ -11,7 +11,6 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
 import contemplativeReptile from '../../../static/images/Cards/contemplative-reptile.jpg';
-import orereoImg from '../../../static/images/Cards/orereo.png';
 import orereoGif from '../../../static/images/Cards/orereo.gif';
 import gameOfLifeImg from '../../../static/images/Cards/game_of_life.png';
 

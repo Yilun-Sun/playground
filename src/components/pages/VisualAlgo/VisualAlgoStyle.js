@@ -1,7 +1,3 @@
-const topNavBarHeight = '64px';
-const leftToolboxWidth = '200px';
-
-const toolBoxColor = '#828282';
 const defaultBackgroundColor = '#3e5780';
 
 const styles = {
