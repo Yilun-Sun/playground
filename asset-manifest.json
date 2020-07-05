@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/home/static/css/main.5ecd60fb.chunk.css",
+    "main.js": "/home/static/js/main.8f3ac705.chunk.js",
+    "main.js.map": "/home/static/js/main.8f3ac705.chunk.js.map",
+    "runtime-main.js": "/home/static/js/runtime-main.00d9f4f6.js",
+    "runtime-main.js.map": "/home/static/js/runtime-main.00d9f4f6.js.map",
+    "static/js/2.616451b4.chunk.js": "/home/static/js/2.616451b4.chunk.js",
+    "static/js/2.616451b4.chunk.js.map": "/home/static/js/2.616451b4.chunk.js.map",
+    "index.html": "/home/index.html",
+    "precache-manifest.4f148098a38bf7ac3d04b877b1ab8884.js": "/home/precache-manifest.4f148098a38bf7ac3d04b877b1ab8884.js",
+    "service-worker.js": "/home/service-worker.js",
+    "static/css/main.5ecd60fb.chunk.css.map": "/home/static/css/main.5ecd60fb.chunk.css.map",
+    "static/js/2.616451b4.chunk.js.LICENSE.txt": "/home/static/js/2.616451b4.chunk.js.LICENSE.txt",
+    "static/media/contemplative-reptile.jpg": "/home/static/media/contemplative-reptile.34dfeed2.jpg",
+    "static/media/game_of_life.png": "/home/static/media/game_of_life.1a994beb.png",
+    "static/media/o.png": "/home/static/media/o.ed2be46e.png",
+    "static/media/orereo.gif": "/home/static/media/orereo.373d9286.gif",
+    "static/media/re.png": "/home/static/media/re.7d5b0651.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.00d9f4f6.js",
+    "static/js/2.616451b4.chunk.js",
+    "static/css/main.5ecd60fb.chunk.css",
+    "static/js/main.8f3ac705.chunk.js"
+  ]
+}
