@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/playground/static/css/main.5ecd60fb.chunk.css",
-    "main.js": "/playground/static/js/main.84ddcf83.chunk.js",
-    "main.js.map": "/playground/static/js/main.84ddcf83.chunk.js.map",
+    "main.js": "/playground/static/js/main.99be57d6.chunk.js",
+    "main.js.map": "/playground/static/js/main.99be57d6.chunk.js.map",
     "runtime-main.js": "/playground/static/js/runtime-main.927a30d0.js",
     "runtime-main.js.map": "/playground/static/js/runtime-main.927a30d0.js.map",
-    "static/js/2.88923fa9.chunk.js": "/playground/static/js/2.88923fa9.chunk.js",
-    "static/js/2.88923fa9.chunk.js.map": "/playground/static/js/2.88923fa9.chunk.js.map",
+    "static/js/2.b7aedb20.chunk.js": "/playground/static/js/2.b7aedb20.chunk.js",
+    "static/js/2.b7aedb20.chunk.js.map": "/playground/static/js/2.b7aedb20.chunk.js.map",
     "index.html": "/playground/index.html",
-    "precache-manifest.2a03d6a23a726889a05dfd7da7fa585b.js": "/playground/precache-manifest.2a03d6a23a726889a05dfd7da7fa585b.js",
+    "precache-manifest.8f6c6e9e48ddec53250a8120e6568f41.js": "/playground/precache-manifest.8f6c6e9e48ddec53250a8120e6568f41.js",
     "service-worker.js": "/playground/service-worker.js",
     "static/css/main.5ecd60fb.chunk.css.map": "/playground/static/css/main.5ecd60fb.chunk.css.map",
-    "static/js/2.88923fa9.chunk.js.LICENSE.txt": "/playground/static/js/2.88923fa9.chunk.js.LICENSE.txt",
+    "static/js/2.b7aedb20.chunk.js.LICENSE.txt": "/playground/static/js/2.b7aedb20.chunk.js.LICENSE.txt",
     "static/media/contemplative-reptile.jpg": "/playground/static/media/contemplative-reptile.34dfeed2.jpg",
     "static/media/game_of_life.png": "/playground/static/media/game_of_life.1a994beb.png",
     "static/media/game_of_life.gif": "/playground/static/media/game_of_life.5516d00e.gif",
@@ -20,12 +20,13 @@
     "static/media/re.png": "/playground/static/media/re.7d5b0651.png",
     "static/media/snowflake-gen.gif": "/playground/static/media/snowflake-gen.cd7b0e89.gif",
     "static/media/snowflake-painter.gif": "/playground/static/media/snowflake-painter.cb8f586e.gif",
-    "static/media/visual-algo.gif": "/playground/static/media/visual-algo.e99479ec.gif"
+    "static/media/visual-algo.gif": "/playground/static/media/visual-algo.e99479ec.gif",
+    "static/media/visual-pathfind.gif": "/playground/static/media/visual-pathfind.907611b1.gif"
   },
   "entrypoints": [
     "static/js/runtime-main.927a30d0.js",
-    "static/js/2.88923fa9.chunk.js",
+    "static/js/2.b7aedb20.chunk.js",
     "static/css/main.5ecd60fb.chunk.css",
-    "static/js/main.84ddcf83.chunk.js"
+    "static/js/main.99be57d6.chunk.js"
   ]
 }
