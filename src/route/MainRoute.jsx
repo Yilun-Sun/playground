@@ -25,13 +25,13 @@ const MainRoute = () => (
       <Route path="/orereo">
         <Orereo />
       </Route>
-      <Route path="/css-jss">
+      <Route path="/cssjss">
         <CssToJss />
       </Route>
       <Route path="/notfound">
         <NotFound />
       </Route>
-      <Route path="/visual-sort-algo">
+      <Route path="/sort">
         <VisualAlgo />
       </Route>
       <Route path="/">

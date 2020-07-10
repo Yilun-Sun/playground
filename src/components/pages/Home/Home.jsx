@@ -20,11 +20,13 @@ import gameOfLifeGif from '../../../static/images/Cards/game_of_life.gif';
 import pathfindGif from '../../../static/images/Cards/visual-pathfind.gif';
 import constructionImg from '../../../static/images/Cards/construction.png';
 
+import { Redirect, useHistory } from 'react-router-dom';
+
 // Pravda vítězí
 export default class Home extends Component {
   constructor() {
     super();
-    this.state = {};
+    this.state = { redirect: null };
   }
 
   // TODO:
@@ -32,7 +34,21 @@ export default class Home extends Component {
 
   componentDidMount() {}
 
+  // FIXME
+  // routeChange = () => {
+  //   console.log('redirect');
+  //   return <Redirect to="/pathfind" />;
+  // };
+
+  routeChange = (path) => {
+    console.log(`redirect to ${path}`);
+    this.setState({ redirect: path });
+  };
+
   render() {
+    if (this.state.redirect) {
+      return <Redirect to={this.state.redirect} />;
+    }
     return (
       <StyledComponent styleMap={PlaygroundStyle}>
         {(useStyles) => {
@@ -43,18 +59,8 @@ export default class Home extends Component {
               <ul className={classes.stage_select_list}>
                 <li className={classes.stage_select_list_item}>
                   <Card className={classes.root}>
-                    <CardActionArea
-                      onClick={() => {
-                        window.location.href = '/pathfind';
-                      }}
-                    >
-                      <CardMedia
-                        component="img"
-                        className={classes.media}
-                        src={pathfindGif}
-                        alt={'contemplativeReptile'}
-                        title="Contemplative Reptile"
-                      />
+                    <CardActionArea onClick={() => this.routeChange('/pathfind')}>
+                      <CardMedia component="img" className={classes.media} src={pathfindGif} />
                       <CardContent>
                         <Typography gutterBottom variant="h5" component="h2">
                           Visualized Pathfinding Algorithms
@@ -64,30 +70,12 @@ export default class Home extends Component {
                         </Typography>
                       </CardContent>
                     </CardActionArea>
-                    {/* <CardActions>
-                      <Button size="small" color="primary">
-                        Share
-                      </Button>
-                      <Button size="small" color="primary">
-                        Learn More
-                      </Button>
-                    </CardActions> */}
                   </Card>
                 </li>
                 <li className={classes.stage_select_list_item}>
                   <Card className={classes.root}>
-                    <CardActionArea
-                      onClick={() => {
-                        window.location.href = '/visual-sort-algo';
-                      }}
-                    >
-                      <CardMedia
-                        component="img"
-                        className={classes.media}
-                        src={visualAlgoGif}
-                        alt={'contemplativeReptile'}
-                        title="Contemplative Reptile"
-                      />
+                    <CardActionArea onClick={() => this.routeChange('/sort')}>
+                      <CardMedia component="img" className={classes.media} src={visualAlgoGif} />
                       <CardContent>
                         <Typography gutterBottom variant="h5" component="h2">
                           Visualized Sorting Algorithms
@@ -97,30 +85,12 @@ export default class Home extends Component {
                         </Typography>
                       </CardContent>
                     </CardActionArea>
-                    {/* <CardActions>
-                      <Button size="small" color="primary">
-                        Share
-                      </Button>
-                      <Button size="small" color="primary">
-                        Learn More
-                      </Button>
-                    </CardActions> */}
                   </Card>
                 </li>
                 <li className={classes.stage_select_list_item}>
                   <Card className={classes.root}>
-                    <CardActionArea
-                      onClick={() => {
-                        window.location.href = '/orereo';
-                      }}
-                    >
-                      <CardMedia
-                        component="img"
-                        className={classes.media}
-                        src={orereoGif}
-                        alt={'contemplativeReptile'}
-                        title="Contemplative Reptile"
-                      />
+                    <CardActionArea onClick={() => this.routeChange('/orereo')}>
+                      <CardMedia component="img" className={classes.media} src={orereoGif} />
                       <CardContent>
                         <Typography gutterBottom variant="h5" component="h2">
                           O-RE-RE-O Builder
@@ -131,26 +101,12 @@ export default class Home extends Component {
                         </Typography>
                       </CardContent>
                     </CardActionArea>
-                    {/* <CardActions>
-                      <Button size="small" color="primary">
-                        Share
-                      </Button>
-                      <Button size="small" color="primary">
-                        Learn More
-                      </Button>
-                    </CardActions> */}
                   </Card>
                 </li>
                 <li className={classes.stage_select_list_item}>
                   <Card className={classes.root}>
                     <CardActionArea>
-                      <CardMedia
-                        component="img"
-                        className={classes.media}
-                        src={gameOfLifeGif}
-                        alt={'contemplativeReptile'}
-                        title="Contemplative Reptile"
-                      />
+                      <CardMedia component="img" className={classes.media} src={gameOfLifeGif} />
                       <CardContent>
                         <Typography gutterBottom variant="h5" component="h2">
                           Conway's Game of Life
@@ -162,198 +118,100 @@ export default class Home extends Component {
                         </Typography>
                       </CardContent>
                     </CardActionArea>
-                    {/* <CardActions>
-                      <Button size="small" color="primary">
-                        Share
-                      </Button>
-                      <Button size="small" color="primary">
-                        Learn More
-                      </Button>
-                    </CardActions> */}
                   </Card>
                 </li>
                 <li className={classes.stage_select_list_item}>
                   <Card className={classes.root}>
                     <CardActionArea>
-                      <CardMedia
-                        component="img"
-                        className={classes.media}
-                        src={snowflakePainterGif}
-                        alt={'contemplativeReptile'}
-                        title="Contemplative Reptile"
-                      />
+                      <CardMedia component="img" className={classes.media} src={snowflakePainterGif} />
                       <CardContent>
                         <Typography gutterBottom variant="h5" component="h2">
                           Snowflake Painter
                         </Typography>
                         <Typography variant="body2" color="textSecondary" component="p">
-                          Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across
-                          all continents except Antarctica
+                          Under construction
                         </Typography>
                       </CardContent>
                     </CardActionArea>
-                    {/* <CardActions>
-                      <Button size="small" color="primary">
-                        Share
-                      </Button>
-                      <Button size="small" color="primary">
-                        Learn More
-                      </Button>
-                    </CardActions> */}
                   </Card>
                 </li>
                 <li className={classes.stage_select_list_item}>
                   <Card className={classes.root}>
                     <CardActionArea>
-                      <CardMedia
-                        component="img"
-                        className={classes.media}
-                        src={snowflakeGeneratorGif}
-                        alt={'contemplativeReptile'}
-                        title="Contemplative Reptile"
-                      />
+                      <CardMedia component="img" className={classes.media} src={snowflakeGeneratorGif} />
                       <CardContent>
                         <Typography gutterBottom variant="h5" component="h2">
                           Snowflake Generator
                         </Typography>
                         <Typography variant="body2" color="textSecondary" component="p">
-                          Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across
-                          all continents except Antarctica
+                          Under construction
                         </Typography>
                       </CardContent>
                     </CardActionArea>
-                    {/* <CardActions>
-                      <Button size="small" color="primary">
-                        Share
-                      </Button>
-                      <Button size="small" color="primary">
-                        Learn More
-                      </Button>
-                    </CardActions> */}
                   </Card>
                 </li>
                 <li className={classes.stage_select_list_item}>
                   <Card className={classes.root}>
                     <CardActionArea>
-                      <CardMedia
-                        component="img"
-                        className={classes.media}
-                        src={contemplativeReptile}
-                        alt={'contemplativeReptile'}
-                        title="Contemplative Reptile"
-                      />
+                      <CardMedia component="img" className={classes.media} src={contemplativeReptile} />
                       <CardMedia component="img" className={classes.construction_layer} src={constructionImg} />
                       <CardContent>
                         <Typography gutterBottom variant="h5" component="h2">
                           Css to Jss
                         </Typography>
                         <Typography variant="body2" color="textSecondary" component="p">
-                          Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across
-                          all continents except Antarctica
+                          Under construction
                         </Typography>
                       </CardContent>
                     </CardActionArea>
-                    {/* <CardActions>
-                      <Button size="small" color="primary">
-                        Share
-                      </Button>
-                      <Button size="small" color="primary">
-                        Learn More
-                      </Button>
-                    </CardActions> */}
                   </Card>
                 </li>
                 <li className={classes.stage_select_list_item}>
                   <Card className={classes.root}>
                     <CardActionArea>
-                      <CardMedia
-                        component="img"
-                        className={classes.media}
-                        src={contemplativeReptile}
-                        alt={'contemplativeReptile'}
-                        title="Contemplative Reptile"
-                      />
+                      <CardMedia component="img" className={classes.media} src={contemplativeReptile} />
                       <CardMedia component="img" className={classes.construction_layer} src={constructionImg} />
                       <CardContent>
                         <Typography gutterBottom variant="h5" component="h2">
                           Max Clique in Graph
                         </Typography>
                         <Typography variant="body2" color="textSecondary" component="p">
-                          Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across
-                          all continents except Antarctica
+                          Under construction
                         </Typography>
                       </CardContent>
                     </CardActionArea>
-                    {/* <CardActions>
-                      <Button size="small" color="primary">
-                        Share
-                      </Button>
-                      <Button size="small" color="primary">
-                        Learn More
-                      </Button>
-                    </CardActions> */}
                   </Card>
                 </li>
                 <li className={classes.stage_select_list_item}>
                   <Card className={classes.root}>
                     <CardActionArea>
-                      <CardMedia
-                        component="img"
-                        className={classes.media}
-                        src={contemplativeReptile}
-                        alt={'contemplativeReptile'}
-                        title="Contemplative Reptile"
-                      />
+                      <CardMedia component="img" className={classes.media} src={contemplativeReptile} />
                       <CardMedia component="img" className={classes.construction_layer} src={constructionImg} />
                       <CardContent>
                         <Typography gutterBottom variant="h5" component="h2">
                           Pixel Painter
                         </Typography>
                         <Typography variant="body2" color="textSecondary" component="p">
-                          Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across
-                          all continents except Antarctica
+                          Under construction
                         </Typography>
                       </CardContent>
                     </CardActionArea>
-                    {/* <CardActions>
-                      <Button size="small" color="primary">
-                        Share
-                      </Button>
-                      <Button size="small" color="primary">
-                        Learn More
-                      </Button>
-                    </CardActions> */}
                   </Card>
                 </li>
                 <li className={classes.stage_select_list_item}>
                   <Card className={classes.root}>
                     <CardActionArea>
-                      <CardMedia
-                        component="img"
-                        className={classes.media}
-                        src={contemplativeReptile}
-                        alt={'contemplativeReptile'}
-                        title="Contemplative Reptile"
-                      />
+                      <CardMedia component="img" className={classes.media} src={contemplativeReptile} />
                       <CardMedia component="img" className={classes.construction_layer} src={constructionImg} />
                       <CardContent>
                         <Typography gutterBottom variant="h5" component="h2">
                           Risk Game Map Editor
                         </Typography>
                         <Typography variant="body2" color="textSecondary" component="p">
-                          Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across
-                          all continents except Antarctica
+                          Under construction
                         </Typography>
                       </CardContent>
                     </CardActionArea>
-                    {/* <CardActions>
-                      <Button size="small" color="primary">
-                        Share
-                      </Button>
-                      <Button size="small" color="primary">
-                        Learn More
-                      </Button>
-                    </CardActions> */}
                   </Card>
                 </li>
               </ul>

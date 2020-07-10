@@ -52,7 +52,7 @@ const Navigation = () => {
           </Link>
         </MenuItem>
         <MenuItem onClick={handleClose}>
-          <Link to="/visual-sort-algo" className={classes.link}>
+          <Link to="/sort" className={classes.link}>
             Visual Algo
           </Link>
         </MenuItem>
@@ -67,7 +67,7 @@ const Navigation = () => {
           </Link>
         </MenuItem>
         <MenuItem onClick={handleClose}>
-          <Link to="/css-jss" className={classes.link}>
+          <Link to="/cssjss" className={classes.link}>
             Css To Jss
           </Link>
         </MenuItem>
