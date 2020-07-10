@@ -7,6 +7,11 @@ import re from '../../../static/images/Oreo/re.png';
 
 import Navigation from '../../topics/NavigationBar/NavigationBar';
 
+// TODO
+// 加入orereo字段
+// 修改按钮为带图片的paper/card
+// 可拖拽点击的奥利奥
+
 export default class Orereo extends Component {
   constructor() {
     super();
@@ -17,44 +22,46 @@ export default class Orereo extends Component {
   componentDidMount() {}
 
   addO = () => {
-    this.setState({
-      oreo: [...this.state.oreo].concat(
-        <div key={`${this.state.oreo.length}`}>
-          <img
-            src={o}
-            alt="logo"
-            style={{
-              width: 240,
-              height: 160,
-              position: 'absolute',
-              top: 650 - this.state.oreo.length * 20,
-              left: window.innerWidth / 2 - 120,
-            }}
-            draggable="false"
-          />
-        </div>
-      ),
-    });
+    if (this.state.oreo.length < 30)
+      this.setState({
+        oreo: [...this.state.oreo].concat(
+          <div key={`${this.state.oreo.length}`}>
+            <img
+              src={o}
+              alt="logo"
+              style={{
+                width: 240,
+                height: 160,
+                position: 'absolute',
+                top: 650 - this.state.oreo.length * 20,
+                left: window.innerWidth / 2 - 120,
+              }}
+              draggable="false"
+            />
+          </div>
+        ),
+      });
   };
   addRE = () => {
-    this.setState({
-      oreo: [...this.state.oreo].concat(
-        <div key={`${this.state.oreo.length}`}>
-          <img
-            src={re}
-            alt="logo"
-            style={{
-              width: 240,
-              height: 160,
-              position: 'absolute',
-              top: 650 - this.state.oreo.length * 20,
-              left: window.innerWidth / 2 - 120,
-            }}
-            draggable="false"
-          />
-        </div>
-      ),
-    });
+    if (this.state.oreo.length < 30)
+      this.setState({
+        oreo: [...this.state.oreo].concat(
+          <div key={`${this.state.oreo.length}`}>
+            <img
+              src={re}
+              alt="logo"
+              style={{
+                width: 240,
+                height: 160,
+                position: 'absolute',
+                top: 650 - this.state.oreo.length * 20,
+                left: window.innerWidth / 2 - 120,
+              }}
+              draggable="false"
+            />
+          </div>
+        ),
+      });
   };
 
   render() {

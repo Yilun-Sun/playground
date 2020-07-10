@@ -29,14 +29,14 @@ export default class VisualAlgo extends Component {
     this.alertSeverity = '';
   }
 
-  // ❎ 控制排序速度
+  // ✅ 控制排序速度
   // ✅‍ 开始排序
   // ✅ 选择排序算法
   // ✅ 设置数组长度
   // ✅ 随机生成待排序数组
   // ❎ 展示排序算法代码
   // ❎ 显示当前所在代码行
-  // ❎ 提示当前状态 例如完成 未完成 需要选择算法等
+  // ✅ 提示当前状态 例如完成 未完成 需要选择算法等
   // ❎ 界面优化
 
   componentDidMount() {

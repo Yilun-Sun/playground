@@ -4,6 +4,8 @@ import Home from '../components/pages/Home/Home';
 import Orereo from '../components/pages/Orereo/Orereo';
 import NotFound from '../components/pages/NotFound/NotFound';
 import VisualAlgo from '../components/pages/VisualAlgo/VisualAlgo';
+import Pathfind from '../components/pages/Pathfind/Pathfind';
+import CssToJss from '../components/pages/CssToJss/CssToJss';
 // import App from '../components/topics/app/App/App';
 import Navigation from '../components/topics/NavigationBar/NavigationBar';
 
@@ -17,8 +19,14 @@ const MainRoute = () => (
       <Route path="/playground">
         <Home />
       </Route>
+      <Route path="/pathfind">
+        <Pathfind />
+      </Route>
       <Route path="/orereo">
         <Orereo />
+      </Route>
+      <Route path="/css-jss">
+        <CssToJss />
       </Route>
       <Route path="/notfound">
         <NotFound />
