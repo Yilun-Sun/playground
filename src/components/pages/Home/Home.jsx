@@ -4,10 +4,8 @@ import StyledComponent from '../../core/StyledComponent';
 
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
-import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
-import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
 import contemplativeReptile from '../../../static/images/Cards/contemplative-reptile.jpg';
@@ -15,12 +13,11 @@ import orereoGif from '../../../static/images/Cards/orereo.gif';
 import visualAlgoGif from '../../../static/images/Cards/visual-algo.gif';
 import snowflakePainterGif from '../../../static/images/Cards/snowflake-painter.gif';
 import snowflakeGeneratorGif from '../../../static/images/Cards/snowflake-gen.gif';
-import gameOfLifeImg from '../../../static/images/Cards/game_of_life.png';
 import gameOfLifeGif from '../../../static/images/Cards/game_of_life.gif';
 import pathfindGif from '../../../static/images/Cards/visual-pathfind.gif';
 import constructionImg from '../../../static/images/Cards/construction.png';
 
-import { Redirect, useHistory } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 // Pravda vítězí
 export default class Home extends Component {
@@ -105,7 +102,7 @@ export default class Home extends Component {
                 </li>
                 <li className={classes.stage_select_list_item}>
                   <Card className={classes.root}>
-                    <CardActionArea>
+                    <CardActionArea onClick={() => this.routeChange('/gameoflife')}>
                       <CardMedia component="img" className={classes.media} src={gameOfLifeGif} />
                       <CardContent>
                         <Typography gutterBottom variant="h5" component="h2">

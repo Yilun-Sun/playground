@@ -8,6 +8,7 @@ import Pathfind from '../components/pages/Pathfind/Pathfind';
 import CssToJss from '../components/pages/CssToJss/CssToJss';
 // import App from '../components/topics/app/App/App';
 import Navigation from '../components/topics/NavigationBar/NavigationBar';
+import GameOfLife from '../components/pages/GameOfLife/GameOfLife';
 
 const MainRoute = () => (
   <div>
@@ -24,6 +25,9 @@ const MainRoute = () => (
       </Route>
       <Route path="/orereo">
         <Orereo />
+      </Route>
+      <Route path="/gameoflife">
+        <GameOfLife />
       </Route>
       <Route path="/cssjss">
         <CssToJss />

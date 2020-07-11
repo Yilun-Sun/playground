@@ -67,6 +67,11 @@ const Navigation = () => {
           </Link>
         </MenuItem>
         <MenuItem onClick={handleClose}>
+          <Link to="/gameoflife" className={classes.link}>
+            Game Of Life
+          </Link>
+        </MenuItem>
+        <MenuItem onClick={handleClose}>
           <Link to="/cssjss" className={classes.link}>
             Css To Jss
           </Link>
