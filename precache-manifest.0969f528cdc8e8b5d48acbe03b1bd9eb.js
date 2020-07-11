@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "2648e613f95ef8422159bd3a5b83abc6",
+    "revision": "5be0ef88b57bff2cf0d80d72b6a0148e",
     "url": "/playground/index.html"
   },
   {
-    "revision": "0ca3ba6e3890b96eacce",
+    "revision": "f403476ebe977dc29941",
     "url": "/playground/static/css/main.5ecd60fb.chunk.css"
   },
   {
-    "revision": "15359175f5da3794fafb",
-    "url": "/playground/static/js/2.0c094aa8.chunk.js"
+    "revision": "1bef0c203badfbfbb6bb",
+    "url": "/playground/static/js/2.9bbe5446.chunk.js"
   },
   {
     "revision": "89ea5e0ed13930f7b9c9c2f392e27cfe",
-    "url": "/playground/static/js/2.0c094aa8.chunk.js.LICENSE.txt"
+    "url": "/playground/static/js/2.9bbe5446.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "0ca3ba6e3890b96eacce",
-    "url": "/playground/static/js/main.5ffae87a.chunk.js"
+    "revision": "f403476ebe977dc29941",
+    "url": "/playground/static/js/main.b1b33c5b.chunk.js"
   },
   {
     "revision": "895c97baf350dc475b41",
@@ -26,10 +26,6 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "34dfeed20d644ba572bd2d8d31bc8d77",
     "url": "/playground/static/media/contemplative-reptile.34dfeed2.jpg"
-  },
-  {
-    "revision": "1a994bebf90f51a841ce698652f7590f",
-    "url": "/playground/static/media/game_of_life.1a994beb.png"
   },
   {
     "revision": "5516d00e084cb05cb348b4d94ce24025",
