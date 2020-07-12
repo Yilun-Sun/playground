@@ -86,6 +86,22 @@ export default class Home extends Component {
                 </li>
                 <li className={classes.stage_select_list_item}>
                   <Card className={classes.root}>
+                    <CardActionArea onClick={() => this.routeChange('/pixel')}>
+                      <CardMedia component="img" className={classes.media} src={contemplativeReptile} />
+                      <CardMedia component="img" className={classes.construction_layer} src={constructionImg} />
+                      <CardContent>
+                        <Typography gutterBottom variant="h5" component="h2">
+                          Pixel Painter
+                        </Typography>
+                        <Typography variant="body2" color="textSecondary" component="p">
+                          Under construction
+                        </Typography>
+                      </CardContent>
+                    </CardActionArea>
+                  </Card>
+                </li>
+                <li className={classes.stage_select_list_item}>
+                  <Card className={classes.root}>
                     <CardActionArea onClick={() => this.routeChange('/orereo')}>
                       <CardMedia component="img" className={classes.media} src={orereoGif} />
                       <CardContent>
@@ -171,22 +187,6 @@ export default class Home extends Component {
                       <CardContent>
                         <Typography gutterBottom variant="h5" component="h2">
                           Max Clique in Graph
-                        </Typography>
-                        <Typography variant="body2" color="textSecondary" component="p">
-                          Under construction
-                        </Typography>
-                      </CardContent>
-                    </CardActionArea>
-                  </Card>
-                </li>
-                <li className={classes.stage_select_list_item}>
-                  <Card className={classes.root}>
-                    <CardActionArea>
-                      <CardMedia component="img" className={classes.media} src={contemplativeReptile} />
-                      <CardMedia component="img" className={classes.construction_layer} src={constructionImg} />
-                      <CardContent>
-                        <Typography gutterBottom variant="h5" component="h2">
-                          Pixel Painter
                         </Typography>
                         <Typography variant="body2" color="textSecondary" component="p">
                           Under construction

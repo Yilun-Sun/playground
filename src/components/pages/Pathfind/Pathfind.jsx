@@ -22,6 +22,9 @@ import Navigation from '../../topics/NavigationBar/NavigationBar';
 
 import { dijkstra } from './algorithms/dijkstra';
 
+// TODO
+// add more algos
+
 export default class PathFind extends Component {
   constructor() {
     super();

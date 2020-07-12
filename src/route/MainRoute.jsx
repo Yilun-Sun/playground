@@ -9,6 +9,7 @@ import CssToJss from '../components/pages/CssToJss/CssToJss';
 // import App from '../components/topics/app/App/App';
 import Navigation from '../components/topics/NavigationBar/NavigationBar';
 import GameOfLife from '../components/pages/GameOfLife/GameOfLife';
+import PixelArt from '../components/pages/PixelArt/PixelArt';
 
 const MainRoute = () => (
   <div>
@@ -37,6 +38,9 @@ const MainRoute = () => (
       </Route>
       <Route path="/sort">
         <VisualAlgo />
+      </Route>
+      <Route path="/pixel">
+        <PixelArt />
       </Route>
       <Route path="/">
         <Redirect to="/playground" />

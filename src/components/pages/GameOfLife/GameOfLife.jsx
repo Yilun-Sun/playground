@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import GameOfLifeStyle from './GameOfLifeStyle';
 import StyledComponent from '../../core/StyledComponent';
 
-import paper, { Tool, Shape, Group, Point, PointText } from 'paper';
-import Button from '@material-ui/core/Button';
+import paper, { Shape } from 'paper';
+// import Button from '@material-ui/core/Button';
 
 // TODO
 // show cases
@@ -61,7 +61,7 @@ export default class GameOfLife extends Component {
         row.push(value);
 
         if (value === 1) {
-          const path = new Shape.Rectangle({
+          new Shape.Rectangle({
             fillColor: 'white',
             topLeft: [j * nodeSize + offsetLeft, i * nodeSize + offsetTop],
             size: nodeSize,
@@ -102,7 +102,7 @@ export default class GameOfLife extends Component {
       for (let i = 0; i < rows; i++) {
         for (let j = 0; j < cols; j++) {
           const hasNext = this.hasLiveInNextGen(i, j);
-          const current = this.grid[i][j];
+          // const current = this.grid[i][j];
           //   if (current === 0 && hasNext) {
           //     newGrid[i][j] = 1;
           //     const path = this.canvasNodeGroup.children[`${i}-${j}`];
@@ -125,7 +125,7 @@ export default class GameOfLife extends Component {
   };
 
   createNode = (i, j, nodeSize, offsetLeft, offsetTop) => {
-    const path = new Shape.Rectangle({
+    new Shape.Rectangle({
       fillColor: 'white',
       topLeft: [j * nodeSize + offsetLeft, i * nodeSize + offsetTop],
       size: nodeSize,
@@ -158,7 +158,8 @@ export default class GameOfLife extends Component {
 
   startRender = () => {
     this.isRendering = !this.isRendering;
-    let timerId = setInterval(() => this.renderGame(), 100);
+    // let timerId = setInterval(() => this.renderGame(), 100);
+    setInterval(() => this.renderGame(), 100);
   };
 
   render() {
