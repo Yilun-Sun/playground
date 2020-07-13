@@ -15,6 +15,7 @@ import snowflakePainterGif from '../../../static/images/Cards/snowflake-painter.
 import snowflakeGeneratorGif from '../../../static/images/Cards/snowflake-gen.gif';
 import gameOfLifeGif from '../../../static/images/Cards/game_of_life.gif';
 import pathfindGif from '../../../static/images/Cards/visual-pathfind.gif';
+import pixelPainterGif from '../../../static/images/Cards/pixel_painter.gif';
 import constructionImg from '../../../static/images/Cards/construction.png';
 
 import { Redirect } from 'react-router-dom';
@@ -87,8 +88,7 @@ export default class Home extends Component {
                 <li className={classes.stage_select_list_item}>
                   <Card className={classes.root}>
                     <CardActionArea onClick={() => this.routeChange('/pixel')}>
-                      <CardMedia component="img" className={classes.media} src={contemplativeReptile} />
-                      <CardMedia component="img" className={classes.construction_layer} src={constructionImg} />
+                      <CardMedia component="img" className={classes.media} src={pixelPainterGif} />
                       <CardContent>
                         <Typography gutterBottom variant="h5" component="h2">
                           Pixel Painter
@@ -135,7 +135,7 @@ export default class Home extends Component {
                 </li>
                 <li className={classes.stage_select_list_item}>
                   <Card className={classes.root}>
-                    <CardActionArea>
+                    <CardActionArea onClick={() => this.routeChange('/snow-paint')}>
                       <CardMedia component="img" className={classes.media} src={snowflakePainterGif} />
                       <CardContent>
                         <Typography gutterBottom variant="h5" component="h2">
@@ -150,7 +150,7 @@ export default class Home extends Component {
                 </li>
                 <li className={classes.stage_select_list_item}>
                   <Card className={classes.root}>
-                    <CardActionArea>
+                    <CardActionArea onClick={() => this.routeChange('/snow-gen')}>
                       <CardMedia component="img" className={classes.media} src={snowflakeGeneratorGif} />
                       <CardContent>
                         <Typography gutterBottom variant="h5" component="h2">

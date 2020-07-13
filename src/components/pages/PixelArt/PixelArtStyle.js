@@ -1,4 +1,4 @@
-const defaultBackgroundColor = '#666666';
+const defaultBackgroundColor = '#303030';
 
 const styles = {
   main: {
@@ -16,11 +16,11 @@ const styles = {
   },
   div_canvas: {
     position: 'absolute',
-    left: '300px',
+    left: '310px',
     right: '100px',
     top: '100px',
     bottom: '100px',
-    backgroundColor: 'black',
+    backgroundColor: '#505050',
   },
   canvas: {
     position: 'absolute',
@@ -30,11 +30,12 @@ const styles = {
   },
   div_picker: {
     position: 'absolute',
-    left: '25px',
+    left: '50px',
     top: '100px',
     width: '250px',
-    height: '800px',
-    backgroundColor: 'blue',
+    bottom: '100px',
+    // height: '800px',
+    backgroundColor: '#505050',
   },
   picker: {
     position: 'absolute',
@@ -43,6 +44,11 @@ const styles = {
     width: '240px',
     height: '600px',
     backgroundColor: 'green',
+  },
+  color_cell: {
+    width: '40px',
+    height: '40px',
+    backgroundColor: 'red',
   },
 };
 

@@ -3,6 +3,8 @@ import PixelArtStyle from './PixelArtStyle';
 import StyledComponent from '../../core/StyledComponent';
 
 import paper, { Shape, Tool, Group } from 'paper';
+import Tooltip from '@material-ui/core/Tooltip';
+
 // import Button from '@material-ui/core/Button';
 
 // TODO
@@ -11,12 +13,12 @@ import paper, { Shape, Tool, Group } from 'paper';
 export default class PixelArt extends Component {
   constructor() {
     super();
-    this.state = {};
+    this.state = { picker: [] };
     this.grid = [];
-    this.canvasNodeGroup = undefined;
-    this.gridRows = 30;
-    this.gridCols = 40;
-    this.nodeSize = 20;
+    // this.canvasNodeGroup = undefined;
+    this.gridRows = 60;
+    this.gridCols = 80;
+    this.nodeSize = 10;
     this.canvasWidth = this.gridCols * this.nodeSize;
     this.canvasHeight = this.gridRows * this.nodeSize;
     this.brush = {
@@ -30,6 +32,11 @@ export default class PixelArt extends Component {
         console.log(this.color);
       },
     };
+    this.specialNodesProps = {
+      lastRow: undefined,
+      lastCol: undefined,
+    };
+    this.current_picker_color = 'yellow';
   }
 
   componentDidMount() {
@@ -37,6 +44,9 @@ export default class PixelArt extends Component {
     paper.setup(this.canvas);
     paper.tools.forEach((tool) => tool.remove());
     const tool = new Tool();
+
+    tool.fixedDistance = this.nodeSize;
+
     tool.onMouseDrag = (event) => {
       this.onMouseDrag(event);
     };
@@ -51,54 +61,82 @@ export default class PixelArt extends Component {
   }
 
   initCanvas = () => {
+    console.log('init');
     const rows = this.gridRows;
     const cols = this.gridCols;
     const nodeSize = this.nodeSize;
-    const canvasNodeGroup = new Group();
-    for (let row = 0; row < rows; row++) {
-      for (let col = 0; col < cols; col++) {
-        const path = new Shape.Rectangle({
-          fillColor: (row + col) % 2 === 0 ? 'white' : 'grey',
-          topLeft: [col * nodeSize, row * nodeSize],
-          size: nodeSize,
-          name: `${row}-${col}`,
+
+    for (let row = 0; row < 2; row++) {
+      for (let col = 0; col < 2; col++) {
+        var path = new Shape.Rectangle({
+          fillColor: (row + col) % 2 === 0 ? 'white' : '#dddddd',
+          topLeft: [(col * nodeSize * this.gridCols) / 2, (row * nodeSize * this.gridRows) / 2],
+          size: [(nodeSize * this.gridCols) / 2, (nodeSize * this.gridRows) / 2],
         });
-        canvasNodeGroup.addChild(path);
       }
     }
-    this.canvasNodeGroup = canvasNodeGroup;
-    console.log(this.canvasNodeGroup);
+
+    const colorCells = [];
+    for (let i = 0; i < 18; i++) {
+      for (let j = 0; j < 6; j++) {
+        const newColorCell = (
+          <div
+            key={`color-cell-${i}-${j}`}
+            // onMouseOver={this.showColor}
+            onClick={this.getColorFromColorCell}
+            style={{
+              position: 'absolute',
+              left: `${j * 40}px`,
+              top: `${i * 40}px`,
+              width: '40px',
+              height: '40px',
+              backgroundColor: `hsl(${i * 20}, ${100}%, ${30 + j * 8}%)`,
+            }}
+          ></div>
+        );
+        colorCells.push(newColorCell);
+      }
+    }
+
+    this.setState({ picker: colorCells });
+    console.log(this.state.picker);
+  };
+
+  getColorFromColorCell = (e) => {
+    console.log(e.target.style.backgroundColor);
+    this.brush.color = e.target.style.backgroundColor;
   };
 
   onMouseDown = (event) => {
+    var c = this.canvas.getContext('2d');
+    var p = c.getImageData(event.point.x, event.point.y, 1, 1).data;
+    console.log(`rgb(${p[0]}, ${p[1]}, ${p[2]})`);
     this.onMouseDrag(event);
   };
 
   onMouseDrag = (event) => {
     const currentX = event.point.x;
     const currentY = event.point.y;
-    const canvasWidth = this.canvas.width;
-    const canvasHeight = this.canvas.height;
+    // const canvasWidth = this.canvas.width;
+    // const canvasHeight = this.canvas.height;
     const nodeSize = this.nodeSize;
     const currentRow = Math.floor(currentY / nodeSize);
     const currentCol = Math.floor(currentX / nodeSize);
-    const brush = this.brush;
-    var canDraw = true;
+    // const brush = this.brush;
 
-    if (currentX > canvasWidth || currentX < 0 || currentY > canvasHeight || currentY < 0) {
-      return;
+    var rect = new Shape.Rectangle({
+      fillColor: this.brush.color,
+      topLeft: [currentCol * nodeSize, currentRow * nodeSize],
+      size: nodeSize,
+    });
+  };
+
+  isCoorsChange = (currentRow, currentCol) => {
+    const specialNodesProps = this.specialNodesProps;
+    if (specialNodesProps.lastRow !== currentRow || specialNodesProps.lastCol !== currentCol) {
+      return true;
     }
-
-    // if pointed node is undefined, return
-    // if (!this.grid[currentRow][currentCol]) return;
-
-    // if (this.grid[currentRow][currentCol] === 'start' || this.grid[currentRow][currentCol] === 'finish') return;
-
-    // TODO:
-    if (canDraw) {
-      const path = this.canvasNodeGroup.children[`${currentRow}-${currentCol}`];
-      path.fillColor = brush.color;
-    }
+    return false;
   };
 
   render() {
@@ -110,13 +148,7 @@ export default class PixelArt extends Component {
             <div className={classes.main}>
               <h1 className={classes.header}>Pixel Painter</h1>
               <div className={classes.div_picker}>
-                <canvas
-                  resize="true"
-                  className={classes.picker}
-                  ref={(el) => {
-                    this.canvas = el;
-                  }}
-                />
+                <div className={classes.picker}>{this.state.picker}</div>
               </div>
               <div id="div_canvas" className={classes.div_canvas}>
                 <canvas

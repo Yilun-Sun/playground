@@ -10,6 +10,8 @@ import CssToJss from '../components/pages/CssToJss/CssToJss';
 import Navigation from '../components/topics/NavigationBar/NavigationBar';
 import GameOfLife from '../components/pages/GameOfLife/GameOfLife';
 import PixelArt from '../components/pages/PixelArt/PixelArt';
+import SnowflakeGen from '../components/pages/SnowflakeGen/SnowflakeGen';
+import SnowflakePainter from '../components/pages/SnowflakePainter/SnowflakePainter';
 
 const MainRoute = () => (
   <div>
@@ -41,6 +43,12 @@ const MainRoute = () => (
       </Route>
       <Route path="/pixel">
         <PixelArt />
+      </Route>
+      <Route path="/snow-gen">
+        <SnowflakeGen />
+      </Route>
+      <Route path="/snow-paint">
+        <SnowflakePainter />
       </Route>
       <Route path="/">
         <Redirect to="/playground" />

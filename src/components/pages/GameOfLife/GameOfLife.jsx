@@ -3,6 +3,7 @@ import GameOfLifeStyle from './GameOfLifeStyle';
 import StyledComponent from '../../core/StyledComponent';
 
 import paper, { Shape } from 'paper';
+
 // import Button from '@material-ui/core/Button';
 
 // TODO

@@ -21,7 +21,7 @@ const Navigation = () => {
 
   return (
     <div>
-      <IconButton
+      {/* <IconButton
         edge="start"
         color="inherit"
         aria-label="menu"
@@ -31,7 +31,7 @@ const Navigation = () => {
         className={classes.navigation}
       >
         <MenuIcon />
-      </IconButton>
+      </IconButton> */}
       <IconButton
         edge="start"
         color="inherit"
@@ -41,9 +41,9 @@ const Navigation = () => {
         onClick={() => {
           window.location.href = '/playground';
         }}
-        className={classes.home_button}
+        className={classes.navigation}
       >
-        <HomeIcon />
+        <HomeIcon style={{ fontSize: 40, color: 'grey' }} />
       </IconButton>
       <Menu id="simple-menu" anchorEl={anchorEl} keepMounted open={Boolean(anchorEl)} onClose={handleClose}>
         <MenuItem onClick={handleClose}>
