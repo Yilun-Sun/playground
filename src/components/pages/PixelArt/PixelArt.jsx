@@ -13,7 +13,7 @@ import Tooltip from '@material-ui/core/Tooltip';
 export default class PixelArt extends Component {
   constructor() {
     super();
-    this.state = { picker: [] };
+    this.state = { picker: [], selected_color_cell: null };
     this.grid = [];
     // this.canvasNodeGroup = undefined;
     this.gridRows = 60;
@@ -82,6 +82,7 @@ export default class PixelArt extends Component {
         const newColorCell = (
           <div
             key={`color-cell-${i}-${j}`}
+            id={`color-cell-${i}-${j}`}
             // onMouseOver={this.showColor}
             onClick={this.getColorFromColorCell}
             style={{
@@ -103,7 +104,8 @@ export default class PixelArt extends Component {
   };
 
   getColorFromColorCell = (e) => {
-    console.log(e.target.style.backgroundColor);
+    // console.log(e.target.style.width);
+
     this.brush.color = e.target.style.backgroundColor;
   };
 
@@ -165,6 +167,7 @@ export default class PixelArt extends Component {
                   }}
                 />
               </div>
+              <button onClick={() => console.log(this.state.picker)}>test</button>
               {/* <Button onClick={() => console.log(this.grid)}>grid</Button>
               <Button onClick={() => this.startRender()}>On/Off</Button> */}
             </div>

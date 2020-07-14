@@ -21,6 +21,7 @@ import StyledComponent from '../../core/StyledComponent';
 import Navigation from '../../topics/NavigationBar/NavigationBar';
 
 import { dijkstra } from './algorithms/dijkstra';
+import { aStar } from './algorithms/aStar';
 
 // TODO
 // add more algos
@@ -397,6 +398,70 @@ export default class PathFind extends Component {
 
   test2() {
     console.log('test2:');
+    const temp = this.specialNodesProps;
+    if (!temp.hasStart || !temp.hasFinish) {
+      console.log('missing start or finish node');
+      return;
+    }
+    const resultArray = aStar(this.grid, temp.startRow, temp.startCol, temp.finishRow, temp.finishCol);
+    const visitedNodesInOrder = resultArray[0];
+    const nodesInShortestPathOrder = resultArray[1];
+
+    for (let row = 0; row < this.grid.length; row++) {
+      for (let col = 0; col < this.grid[0].length; col++) {
+        const path = this.canvasNodeGroup.children[`${row}-${col}`];
+        path.fillColor = this.brush.brushDict[this.grid[row][col]];
+      }
+    }
+
+    if (visitedNodesInOrder !== null) {
+      visitedNodesInOrder.forEach((node) => {
+        const path = this.canvasNodeGroup.children[`${node.row}-${node.col}`];
+        if (
+          (node.row !== temp.startRow || node.col !== temp.startCol) &&
+          (node.row !== temp.finishRow || node.col !== temp.finishCol)
+        )
+          path.fillColor = this.visitedNodeColor;
+
+        const text_f = new PointText(new Point(node.col * this.state.nodeSize + 8, node.row * this.state.nodeSize + 8));
+        text_f.justification = 'center';
+        text_f.fillColor = 'black';
+        text_f.fontSize = 8;
+        text_f.content = node.f;
+
+        const text_g = new PointText(
+          new Point(node.col * this.state.nodeSize + 8, node.row * this.state.nodeSize + 38)
+        );
+        text_g.justification = 'center';
+        text_g.fillColor = 'black';
+        text_g.fontSize = 8;
+        text_g.content = node.g;
+
+        const text_h = new PointText(
+          new Point(node.col * this.state.nodeSize + 33, node.row * this.state.nodeSize + 38)
+        );
+        text_h.justification = 'center';
+        text_h.fillColor = 'black';
+        text_h.fontSize = 8;
+        text_h.content = node.h;
+      });
+    } else {
+      console.log('visitedNodesInOrder is null');
+    }
+
+    if (nodesInShortestPathOrder !== null) {
+      nodesInShortestPathOrder.forEach((node) => {
+        const path = this.canvasNodeGroup.children[`${node.row}-${node.col}`];
+        if (
+          (node.row !== temp.startRow || node.col !== temp.startCol) &&
+          (node.row !== temp.finishRow || node.col !== temp.finishCol)
+        ) {
+          path.fillColor = this.shortestPathColor;
+        }
+      });
+    } else {
+      console.log('nodesInShortestPathOrder is null');
+    }
   }
 
   initCanvasGridSize = () => {
