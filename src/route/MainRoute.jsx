@@ -12,6 +12,8 @@ import GameOfLife from '../components/pages/GameOfLife/GameOfLife';
 import PixelArt from '../components/pages/PixelArt/PixelArt';
 import SnowflakeGen from '../components/pages/SnowflakeGen/SnowflakeGen';
 import SnowflakePainter from '../components/pages/SnowflakePainter/SnowflakePainter';
+import PaperChart from '../components/pages/PaperChart/PaperChart';
+import StyledMarkdown from '../components/pages/StyledMarkdown/StyledMarkdown';
 
 const MainRoute = () => (
   <div>
@@ -49,6 +51,12 @@ const MainRoute = () => (
       </Route>
       <Route path="/snow-paint">
         <SnowflakePainter />
+      </Route>
+      <Route path="/style-md">
+        <StyledMarkdown />
+      </Route>
+      <Route path="/chart">
+        <PaperChart />
       </Route>
       <Route path="/">
         <Redirect to="/playground" />

@@ -60,9 +60,11 @@ export default class PathFind extends Component {
     this.gridLineWidth = 1;
 
     this.canvasNodeGroup = undefined;
+    this.canvasTextGroup = undefined;
     this.onMouseDownNodeType = '';
     this.mouseDownOnce = false;
     this.onEraseMode = false;
+    this.selectAlgo = 'dijkstra';
 
     this.specialNodesProps = {
       startRow: -1,
@@ -244,7 +246,7 @@ export default class PathFind extends Component {
           specialNodesProps.startRow = currentRow;
           specialNodesProps.startCol = currentCol;
           // print Dijkstra
-          if (this.state.isRenderingAlgo) this.printDijkstra();
+          if (this.state.isRenderingAlgo) this.renderAlgo();
         }
       } else if (this.onMouseDownNodeType === 'finish') {
         const lastNode = this.canvasNodeGroup.children[`${specialNodesProps.finishRow}-${specialNodesProps.finishCol}`];
@@ -256,7 +258,7 @@ export default class PathFind extends Component {
           specialNodesProps.finishRow = currentRow;
           specialNodesProps.finishCol = currentCol;
           // print Dijkstra
-          if (this.state.isRenderingAlgo) this.printDijkstra();
+          if (this.state.isRenderingAlgo) this.renderAlgo();
         }
       }
 
@@ -292,7 +294,21 @@ export default class PathFind extends Component {
 
     if (this.isCoorsChange(currentRow, currentCol) || this.mouseDownOnce) {
       this.mouseDownOnce = false;
-      if (this.state.isRenderingAlgo) this.printDijkstra();
+      if (this.state.isRenderingAlgo) this.renderAlgo();
+    }
+  };
+
+  renderAlgo = () => {
+    switch (this.selectAlgo) {
+      case 'dijkstra':
+        this.printDijkstra();
+        break;
+      case 'astar':
+        this.printAStar();
+        break;
+
+      default:
+        break;
     }
   };
 
@@ -398,6 +414,12 @@ export default class PathFind extends Component {
 
   test2() {
     console.log('test2:');
+    this.selectAlgo = 'astar';
+  }
+
+  printAStar = () => {
+    // remove all text rendered before
+
     const temp = this.specialNodesProps;
     if (!temp.hasStart || !temp.hasFinish) {
       console.log('missing start or finish node');
@@ -415,6 +437,9 @@ export default class PathFind extends Component {
     }
 
     if (visitedNodesInOrder !== null) {
+      // reset all text before render
+      this.resetAllText();
+
       visitedNodesInOrder.forEach((node) => {
         const path = this.canvasNodeGroup.children[`${node.row}-${node.col}`];
         if (
@@ -423,27 +448,9 @@ export default class PathFind extends Component {
         )
           path.fillColor = this.visitedNodeColor;
 
-        const text_f = new PointText(new Point(node.col * this.state.nodeSize + 8, node.row * this.state.nodeSize + 8));
-        text_f.justification = 'center';
-        text_f.fillColor = 'black';
-        text_f.fontSize = 8;
-        text_f.content = node.f;
+        this.changeText(node.col, node.row, node.f, node.g, node.h);
 
-        const text_g = new PointText(
-          new Point(node.col * this.state.nodeSize + 8, node.row * this.state.nodeSize + 38)
-        );
-        text_g.justification = 'center';
-        text_g.fillColor = 'black';
-        text_g.fontSize = 8;
-        text_g.content = node.g;
-
-        const text_h = new PointText(
-          new Point(node.col * this.state.nodeSize + 33, node.row * this.state.nodeSize + 38)
-        );
-        text_h.justification = 'center';
-        text_h.fillColor = 'black';
-        text_h.fontSize = 8;
-        text_h.content = node.h;
+        // this.showPreviousDir(node);
       });
     } else {
       console.log('visitedNodesInOrder is null');
@@ -457,12 +464,77 @@ export default class PathFind extends Component {
           (node.row !== temp.finishRow || node.col !== temp.finishCol)
         ) {
           path.fillColor = this.shortestPathColor;
+
+          // this.showPreviousDir(node);
         }
       });
     } else {
       console.log('nodesInShortestPathOrder is null');
     }
-  }
+  };
+
+  showPreviousDir = (node) => {
+    const nodeSize = this.state.nodeSize;
+    const previousNode = node.previousNode;
+    new Shape.Rectangle({
+      fillColor: 'red',
+      center: [
+        node.col * nodeSize + nodeSize / 2 + 15 * (previousNode.col - node.col),
+        node.row * nodeSize + nodeSize / 2 + 15 * (previousNode.row - node.row),
+      ],
+      size: 5,
+    });
+  };
+
+  resetAllText = () => {
+    if (this.canvasTextGroup !== undefined) {
+      this.canvasTextGroup.children.forEach((child) => (child.content = ''));
+    }
+  };
+
+  changeText = (col, row, f, g, h) => {
+    const nodeSize = this.state.nodeSize;
+    if (this.canvasTextGroup === undefined) {
+      this.canvasTextGroup = new Group();
+    }
+    var canvasTextGroup = this.canvasTextGroup;
+
+    if (canvasTextGroup.children[`f-${row}-${col}`]) {
+      canvasTextGroup.children[`f-${row}-${col}`].content = f;
+    } else {
+      const text_f = new PointText(new Point(col * nodeSize + 8, row * nodeSize + 8));
+      text_f.justification = 'center';
+      text_f.fillColor = 'black';
+      text_f.fontSize = 8;
+      text_f.content = f;
+      text_f.name = `f-${row}-${col}`;
+      canvasTextGroup.addChild(text_f);
+    }
+
+    if (canvasTextGroup.children[`g-${row}-${col}`]) {
+      canvasTextGroup.children[`g-${row}-${col}`].content = g;
+    } else {
+      const text_g = new PointText(new Point(col * nodeSize + 8, row * nodeSize + 38));
+      text_g.justification = 'center';
+      text_g.fillColor = 'black';
+      text_g.fontSize = 8;
+      text_g.content = g;
+      text_g.name = `g-${row}-${col}`;
+      canvasTextGroup.addChild(text_g);
+    }
+
+    if (canvasTextGroup.children[`h-${row}-${col}`]) {
+      canvasTextGroup.children[`h-${row}-${col}`].content = h;
+    } else {
+      const text_h = new PointText(new Point(col * nodeSize + 33, row * nodeSize + 38));
+      text_h.justification = 'center';
+      text_h.fillColor = 'black';
+      text_h.fontSize = 8;
+      text_h.content = h;
+      text_h.name = `h-${row}-${col}`;
+      canvasTextGroup.addChild(text_h);
+    }
+  };
 
   initCanvasGridSize = () => {
     const nodeSize = this.state.nodeSize;
@@ -536,7 +608,7 @@ export default class PathFind extends Component {
     const lastRenderingState = this.state.isRenderingAlgo;
     this.setState({ isRenderingAlgo: !lastRenderingState });
     if (!lastRenderingState) {
-      this.printDijkstra();
+      this.renderAlgo();
     } else {
       for (let row = 0; row < this.grid.length; row++) {
         for (let col = 0; col < this.grid[0].length; col++) {

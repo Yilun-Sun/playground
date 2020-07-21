@@ -181,6 +181,38 @@ export default class Home extends Component {
                 </li>
                 <li className={classes.stage_select_list_item}>
                   <Card className={classes.root}>
+                    <CardActionArea onClick={() => this.routeChange('/chart')}>
+                      <CardMedia component="img" className={classes.media} src={contemplativeReptile} />
+                      <CardMedia component="img" className={classes.construction_layer} src={constructionImg} />
+                      <CardContent>
+                        <Typography gutterBottom variant="h5" component="h2">
+                          Paper Chart
+                        </Typography>
+                        <Typography variant="body2" color="textSecondary" component="p">
+                          Under construction
+                        </Typography>
+                      </CardContent>
+                    </CardActionArea>
+                  </Card>
+                </li>
+                <li className={classes.stage_select_list_item}>
+                  <Card className={classes.root}>
+                    <CardActionArea onClick={() => this.routeChange('/style-md')}>
+                      <CardMedia component="img" className={classes.media} src={contemplativeReptile} />
+                      <CardMedia component="img" className={classes.construction_layer} src={constructionImg} />
+                      <CardContent>
+                        <Typography gutterBottom variant="h5" component="h2">
+                          Styled Markdown
+                        </Typography>
+                        <Typography variant="body2" color="textSecondary" component="p">
+                          Under construction
+                        </Typography>
+                      </CardContent>
+                    </CardActionArea>
+                  </Card>
+                </li>
+                <li className={classes.stage_select_list_item}>
+                  <Card className={classes.root}>
                     <CardActionArea>
                       <CardMedia component="img" className={classes.media} src={contemplativeReptile} />
                       <CardMedia component="img" className={classes.construction_layer} src={constructionImg} />

@@ -8,17 +8,16 @@ export function aStar(oldGrid, START_NODE_ROW, START_NODE_COL, FINISH_NODE_ROW, 
   startNode.g = 0;
   startNode.h = getH(startNode, finishNode);
   startNode.f = startNode.g + startNode.h;
-  //   const unvisitedNodes = getAllNodes(grid);
 
   const openList = [];
   //   const closeList = [];
-  // use isVisited instead
+  // use isInClosed instead
   openList.push(startNode);
 
   while (!!openList.length) {
-    openList.sort((nodeA, nodeB) => nodeA.f - nodeB.f);
+    openList.sort((nodeA, nodeB) => nodeA.f === nodeB.f ? nodeA.h - nodeB.h : nodeA.f - nodeB.f);
     const currentNode = openList.shift();
-    currentNode.isVisited = true;
+    currentNode.isInClosed = true;
 
     if (currentNode.row === finishNode.row && currentNode.col === finishNode.col) {
       console.log('finish');
@@ -27,19 +26,22 @@ export function aStar(oldGrid, START_NODE_ROW, START_NODE_COL, FINISH_NODE_ROW, 
 
     const neighbours = getNeighbours(currentNode, grid);
     neighbours.forEach((neighbour) => {
-      if (neighbour.isWall || neighbour.isVisited) {
+      if (neighbour.isWall || neighbour.isInClosed) {
         // closeList.push(neighbour);
       } else {
-        neighbour.previousNode = currentNode;
+        // neighbour.previousNode = currentNode;
         if (neighbour.g !== null) {
           if (currentNode.g + 10 < neighbour.g) {
             neighbour.previousNode = currentNode;
+            neighbour.g = currentNode.g + 10
           }
 
-          neighbour.g = Math.min(neighbour.g, currentNode.g + 10);
+          // neighbour.g = Math.min(neighbour.g, currentNode.g + 10);
         } else {
+          neighbour.previousNode = currentNode;
           neighbour.g = currentNode.g + 10;
         }
+
         neighbour.h = getH(neighbour, finishNode);
         neighbour.f = neighbour.g + neighbour.h;
 
@@ -58,7 +60,10 @@ export function aStar(oldGrid, START_NODE_ROW, START_NODE_COL, FINISH_NODE_ROW, 
 
 function getNeighbours(node, grid) {
   const neighbors = [];
-  const { col, row } = node;
+  const {
+    col,
+    row
+  } = node;
   if (row > 0) neighbors.push(grid[row - 1][col]);
   if (row < grid.length - 1) neighbors.push(grid[row + 1][col]);
   if (col > 0) neighbors.push(grid[row][col - 1]);
@@ -68,38 +73,11 @@ function getNeighbours(node, grid) {
 
 function getH(node1, node2) {
   return (Math.abs(node1.col - node2.col) + Math.abs(node1.row - node2.row)) * 10;
+  // return getEuclideanDistance(Math.abs(node1.col - node2.col), Math.abs(node1.row - node2.row));
 }
 
-function sortNodesByDistance(unvisitedNodes) {
-  unvisitedNodes.sort((nodeA, nodeB) => nodeA.distance - nodeB.distance);
-}
-
-function updateUnvisitedNeighbors(node, grid) {
-  const unvisitedNeighbors = getUnvisitedNeighbors(node, grid);
-  for (const neighbor of unvisitedNeighbors) {
-    neighbor.distance = node.distance + 1;
-    neighbor.previousNode = node;
-  }
-}
-
-function getUnvisitedNeighbors(node, grid) {
-  const neighbors = [];
-  const { col, row } = node;
-  if (row > 0) neighbors.push(grid[row - 1][col]);
-  if (row < grid.length - 1) neighbors.push(grid[row + 1][col]);
-  if (col > 0) neighbors.push(grid[row][col - 1]);
-  if (col < grid[0].length - 1) neighbors.push(grid[row][col + 1]);
-  return neighbors.filter((neighbor) => !neighbor.isVisited);
-}
-
-function getAllNodes(grid) {
-  const nodes = [];
-  for (const row of grid) {
-    for (const node of row) {
-      nodes.push(node);
-    }
-  }
-  return nodes;
+function getEuclideanDistance(diff_x, diff_y) {
+  return Math.round(Math.sqrt(diff_x * diff_x + diff_y * diff_y) * 10)
 }
 
 const modifyGrid = (grid, START_NODE_ROW, START_NODE_COL, FINISH_NODE_ROW, FINISH_NODE_COL) => {
@@ -122,7 +100,7 @@ const createNode = (isWall, col, row, START_NODE_ROW, START_NODE_COL, FINISH_NOD
     isStart: row === START_NODE_ROW && col === START_NODE_COL,
     isFinish: row === FINISH_NODE_ROW && col === FINISH_NODE_COL,
     // distance: Infinity,
-    isVisited: false,
+    isInClosed: false,
     isWall: isWall,
     previousNode: null,
     f: null,
