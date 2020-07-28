@@ -149,35 +149,50 @@ export default class TestChart extends Component {
             name: `bar-${i}`,
           });
 
+          const backTip = new Shape.Rectangle({
+            fillColor: color.cloud.dark,
+            bottomLeft: [
+              offsetMark + i * (barSize * (1 + gapPrecent)) - (barSize * gapPrecent) / 2,
+              this.canvas.height - offsetMark,
+            ],
+            size: [barSize * (1 + gapPrecent), this.canvas.height - 2 * offsetMark],
+            opacity: 0.3,
+            visible: false,
+          });
+          backTip.sendToBack();
           const tool_tip = new Shape.Rectangle({
             fillColor: color.grey.dark,
             center: [
               offsetMark + i * (barSize * (1 + gapPrecent)) + barSize / 2,
-              this.canvas.height - offsetMark - unitHeight * attrValue - smallMarkLength - 5,
+              this.canvas.height - offsetMark - unitHeight * attrValue - 2 * smallMarkLength - 5,
             ],
             size: [50, 20],
             visible: false,
             radius: new Size(3, 3),
+            opacity: 0.8,
           });
           const info = new PointText(
             new Point(
               offsetMark + i * (barSize * (1 + gapPrecent)) + barSize / 2,
-              this.canvas.height - offsetMark - unitHeight * attrValue - smallMarkLength
+              this.canvas.height - offsetMark - unitHeight * attrValue - 2 * smallMarkLength
             )
           );
           info.justification = 'center';
           info.fillColor = color.cloud.light;
           info.content = attrValue;
           info.visible = false;
+          info.opacity = 0.8;
           path.on('mouseenter', function () {
             this.fillColor = color.blue.dark;
             info.visible = true;
             tool_tip.visible = true;
+            backTip.visible = true;
           });
           path.on('mouseleave', function () {
             this.fillColor = color.blue.light;
             info.visible = false;
             tool_tip.visible = false;
+            backTip.visible = false;
           });
         }
         if (attrName === 'name') {
