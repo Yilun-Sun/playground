@@ -33,7 +33,9 @@ export default class PaperChart extends Component {
           return (
             <div className={classes.main}>
               <h1 className={classes.header}>Paper Chart</h1>
-              <TestChart style={{ position: 'absolute', left: '100px', top: '100px' }}></TestChart>
+              <div className={classes.charts_containter}>
+                <TestChart></TestChart>
+              </div>
               {/* <div className={classes.main_canvas}>
                 <canvas
                   resize="true"

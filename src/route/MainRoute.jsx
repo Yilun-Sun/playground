@@ -55,9 +55,7 @@ const MainRoute = () => (
       <Route path="/style-md">
         <StyledMarkdown />
       </Route>
-      <Route path="/chart">
-        <PaperChart />
-      </Route>
+      <Route exact path="/chart" component={PaperChart}></Route>
       <Route path="/">
         <Redirect to="/playground" />
       </Route>

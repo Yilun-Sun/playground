@@ -1,8 +1,8 @@
-const defaultBackgroundColor = '#FAFAFA';
+import color from './PaperChartCommonStyle';
+const defaultBackgroundColor = color.midnight.light;
 
 const styles = {
   main: {
-    position: 'absolute',
     backgroundColor: defaultBackgroundColor,
     height: '100vh',
   },
@@ -12,16 +12,16 @@ const styles = {
     textAlign: 'center',
     paddingTop: '15px',
     paddingBottom: '5px',
-    color: 'blue',
+    color: color.cloud.light,
+    width: '100vw',
     // height: '100px',
   },
-  main_canvas: {
+  charts_containter: {
     position: 'absolute',
-    left: '100px',
-    right: '100px',
     top: '100px',
-    bottom: '100px',
-    backgroundColor: 'black',
+    left: '50%',
+    minWidth: '600px',
+    marginLeft: '-300px',
   },
 };
 

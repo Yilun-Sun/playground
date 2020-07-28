@@ -36,7 +36,8 @@ const styles = {
     top: '100px',
     bottom: '100px',
     width: '400px',
-    backgroundColor: 'white'
+    backgroundColor: 'white',
+    padding: '10px'
   }
 };
 
