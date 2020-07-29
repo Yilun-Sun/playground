@@ -1,21 +1,22 @@
 {
   "files": {
     "main.css": "/playground/static/css/main.69eda509.chunk.css",
-    "main.js": "/playground/static/js/main.27814d35.chunk.js",
-    "main.js.map": "/playground/static/js/main.27814d35.chunk.js.map",
+    "main.js": "/playground/static/js/main.54479dc2.chunk.js",
+    "main.js.map": "/playground/static/js/main.54479dc2.chunk.js.map",
     "runtime-main.js": "/playground/static/js/runtime-main.927a30d0.js",
     "runtime-main.js.map": "/playground/static/js/runtime-main.927a30d0.js.map",
-    "static/js/2.22f40705.chunk.js": "/playground/static/js/2.22f40705.chunk.js",
-    "static/js/2.22f40705.chunk.js.map": "/playground/static/js/2.22f40705.chunk.js.map",
+    "static/js/2.331fe051.chunk.js": "/playground/static/js/2.331fe051.chunk.js",
+    "static/js/2.331fe051.chunk.js.map": "/playground/static/js/2.331fe051.chunk.js.map",
     "index.html": "/playground/index.html",
-    "precache-manifest.e824245b70ba507d4ba9c000a6f60be8.js": "/playground/precache-manifest.e824245b70ba507d4ba9c000a6f60be8.js",
+    "precache-manifest.73c1b9113263d65480545be7ff4c9fee.js": "/playground/precache-manifest.73c1b9113263d65480545be7ff4c9fee.js",
     "service-worker.js": "/playground/service-worker.js",
     "static/css/main.69eda509.chunk.css.map": "/playground/static/css/main.69eda509.chunk.css.map",
-    "static/js/2.22f40705.chunk.js.LICENSE.txt": "/playground/static/js/2.22f40705.chunk.js.LICENSE.txt",
+    "static/js/2.331fe051.chunk.js.LICENSE.txt": "/playground/static/js/2.331fe051.chunk.js.LICENSE.txt",
     "static/media/contemplative-reptile.jpg": "/playground/static/media/contemplative-reptile.34dfeed2.jpg",
     "static/media/game_of_life.gif": "/playground/static/media/game_of_life.5516d00e.gif",
     "static/media/o.png": "/playground/static/media/o.ed2be46e.png",
     "static/media/orereo.gif": "/playground/static/media/orereo.373d9286.gif",
+    "static/media/paper-chart.gif": "/playground/static/media/paper-chart.caeb44a6.gif",
     "static/media/pixel_painter.gif": "/playground/static/media/pixel_painter.e0de3dda.gif",
     "static/media/re.png": "/playground/static/media/re.7d5b0651.png",
     "static/media/snowflake-gen.gif": "/playground/static/media/snowflake-gen.cd7b0e89.gif",
@@ -25,8 +26,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.927a30d0.js",
-    "static/js/2.22f40705.chunk.js",
+    "static/js/2.331fe051.chunk.js",
     "static/css/main.69eda509.chunk.css",
-    "static/js/main.27814d35.chunk.js"
+    "static/js/main.54479dc2.chunk.js"
   ]
 }
