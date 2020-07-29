@@ -25,6 +25,18 @@ const styles = {
     width: '100%',
     height: '100%',
   },
+  chart_data_div: {
+    position: 'relative',
+    width: '600px',
+    // height: '300px',
+  },
+  chart_data: {
+    position: 'absolute',
+    top: '50px',
+    left: '50px',
+    width: '500px',
+    height: '300px',
+  },
 };
 
 export default styles;

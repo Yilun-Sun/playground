@@ -6,6 +6,7 @@ import paper, { Shape, PointText, Point, Path, Tool, Size } from 'paper';
 import Tooltip from '@material-ui/core/Tooltip';
 import color from '../../PaperChartCommonStyle';
 // import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
 
 // TODO
 // 添加悬浮显示数据
@@ -95,47 +96,14 @@ export default class TestChart extends Component {
         multiLevel /= 10;
       }
     }
-    const leftMaxValue = Math.ceil(tempMaxValue / 5) * 5;
+    // const leftMaxValue = Math.ceil(tempMaxValue / 5) * 5;
+    const leftMaxValue = this.drawGrid(tempMaxValue, multiLevel);
     console.log('temp ' + leftMaxValue * multiLevel);
 
     const barSize = (this.canvas.width - 2 * offsetMark) / (arrayLength * (1 + gapPrecent));
-    // const gapSize = barSize / 5;
     const unitHeight = (this.canvas.height - 2 * offsetMark) / (leftMaxValue * multiLevel);
 
-    for (let i = 0; i < 6; i++) {
-      const text = new PointText(
-        new Point(
-          offsetMark - smallMarkLength - 1,
-          this.canvas.height - offsetMark - (i * (this.canvas.height - 2 * offsetMark)) / 5 + 5
-        )
-      );
-      text.justification = 'right';
-      text.fillColor = color.grey.dark;
-      text.content = ((leftMaxValue * multiLevel) / 5) * i;
-
-      const from = new Point(
-        offsetMark,
-        this.canvas.height - offsetMark - (i * (this.canvas.height - 2 * offsetMark)) / 5
-      );
-      const to = new Point(
-        offsetMark - smallMarkLength,
-        this.canvas.height - offsetMark - (i * (this.canvas.height - 2 * offsetMark)) / 5
-      );
-      const path = new Path.Line(from, to);
-      path.strokeColor = color.grey.dark;
-
-      const line_from = new Point(
-        offsetMark,
-        this.canvas.height - offsetMark - (i * (this.canvas.height - 2 * offsetMark)) / 5
-      );
-      const line_to = new Point(
-        this.canvas.width - offsetMark + smallMarkLength,
-        this.canvas.height - offsetMark - (i * (this.canvas.height - 2 * offsetMark)) / 5
-      );
-      const line_path = new Path.Line(line_from, line_to);
-      line_path.strokeColor = color.cloud.dark;
-    }
-
+    // draw bar
     for (let i = 0; i < text_data.length; i++) {
       let obj = text_data[i];
       for (let key in obj) {
@@ -219,8 +187,76 @@ export default class TestChart extends Component {
 
     // this.drawMark(true);
     this.drawMark(false, false, true, true);
+  };
 
-    console.log(`${barSize} ${unitHeight}`);
+  // left inclusive, right exclusive
+  isInRange = (value, start, end) => {
+    return value >= start && value < end;
+  };
+
+  drawGrid = (tempMaxValue, multiLevel) => {
+    console.log(multiLevel);
+    var gridDistance = 0;
+    var gridNums = 0;
+    if (this.isInRange(tempMaxValue, 10, 25)) {
+      gridDistance = 5;
+    } else if (this.isInRange(tempMaxValue, 25, 50)) {
+      gridDistance = 10;
+    } else if (this.isInRange(tempMaxValue, 50, 100)) {
+      gridDistance = 20;
+    }
+
+    gridNums = Math.ceil(tempMaxValue / gridDistance);
+    for (let i = 0; i <= gridNums; i++) {
+      const text = new PointText(
+        new Point(
+          offsetMark - smallMarkLength - 1,
+          this.canvas.height - offsetMark - (i * (this.canvas.height - 2 * offsetMark)) / gridNums + 5
+        )
+      );
+      text.justification = 'right';
+      text.fillColor = color.grey.dark;
+      text.content =
+        multiLevel >= 1
+          ? gridDistance * multiLevel * i
+          : (gridDistance * multiLevel * i).toFixed(multiLevel.toString().split('.')[1].length);
+
+      const line_from = new Point(
+        offsetMark - smallMarkLength,
+        this.canvas.height - offsetMark - (i * (this.canvas.height - 2 * offsetMark)) / gridNums
+      );
+      const line_to = new Point(
+        this.canvas.width - offsetMark + smallMarkLength,
+        this.canvas.height - offsetMark - (i * (this.canvas.height - 2 * offsetMark)) / gridNums
+      );
+      const line_path = new Path.Line(line_from, line_to);
+      line_path.strokeColor = color.cloud.dark;
+    }
+
+    return gridNums * gridDistance;
+
+    // for (let i = 0; i < 6; i++) {
+    //   const text = new PointText(
+    //     new Point(
+    //       offsetMark - smallMarkLength - 1,
+    //       this.canvas.height - offsetMark - (i * (this.canvas.height - 2 * offsetMark)) / 5 + 5
+    //     )
+    //   );
+    //   text.justification = 'right';
+    //   text.fillColor = color.grey.dark;
+    //   text.content = ((leftMaxValue * multiLevel) / 5) * i;
+
+    //   const line_from = new Point(
+    //     offsetMark - smallMarkLength,
+    //     this.canvas.height - offsetMark - (i * (this.canvas.height - 2 * offsetMark)) / 5
+    //   );
+    //   const line_to = new Point(
+    //     this.canvas.width - offsetMark + smallMarkLength,
+    //     this.canvas.height - offsetMark - (i * (this.canvas.height - 2 * offsetMark)) / 5
+    //   );
+    //   const line_path = new Path.Line(line_from, line_to);
+    //   line_path.strokeColor = color.cloud.dark;
+    // }
   };
 
   drawMark() {
@@ -269,6 +305,14 @@ export default class TestChart extends Component {
     }
   }
 
+  updateCanvas = () => {
+    const value = document.getElementById('test-chart-data-json').value;
+    // console.log(JSON.parse(value));
+    text_data = JSON.parse(value);
+    paper.setup(this.canvas);
+    this.initCanvas();
+  };
+
   render() {
     return (
       <StyledComponent styleMap={TestChartStyle}>
@@ -284,6 +328,19 @@ export default class TestChart extends Component {
                   ref={(el) => {
                     this.canvas = el;
                   }}
+                />
+              </div>
+              <div className={classes.chart_data_div}>
+                <TextField
+                  id="test-chart-data-json"
+                  // label="Multiline"
+                  multiline
+                  rows={10}
+                  defaultValue={JSON.stringify(text_data)}
+                  variant="filled"
+                  className={classes.chart_data}
+                  // fullWidth="true"
+                  onChange={() => this.updateCanvas()}
                 />
               </div>
               {/* <Button onClick={() => console.log(this.grid)}>grid</Button>
