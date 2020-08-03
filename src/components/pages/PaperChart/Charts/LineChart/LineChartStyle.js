@@ -4,10 +4,10 @@ const defaultBackgroundColor = '#FAFAFA';
 
 const styles = {
   main: {
-    marginTop: '30px',
+    marginTop: '50px',
     width: '600px',
     backgroundColor: defaultBackgroundColor,
-    border: '1px solid #DDDDDD',
+    border: '1px solid white',
     borderRadius: 0,
   },
   header: {

@@ -8,6 +8,9 @@ const styles = {
   main: {
     backgroundColor: defaultBackgroundColor,
   },
+  footer: {
+    height: '200px',
+  },
   header: {
     margin: '0px 0px 20px 0px',
     fontSize: '48px',
@@ -33,6 +36,7 @@ const styles = {
     gridGap: '40px',
     padding: '0px',
     maxWidth: '80vw',
+    marginTop: '30px',
   },
   stage_select_list_item: {
     background: defaultBackgroundColor,

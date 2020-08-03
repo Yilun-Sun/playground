@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import TestChartStyle from './TestChartStyle';
+import BarChartStyle from './BarChartStyle';
 import StyledComponent from '../../../../core/StyledComponent';
 
 import paper, { Shape, PointText, Point, Path, Tool, Size } from 'paper';
@@ -44,7 +44,7 @@ const offsetMark = 40;
 const gapPrecent = 0.2;
 const smallMarkLength = 4;
 
-export default class TestChart extends Component {
+export default class BarChart extends Component {
   constructor() {
     super();
     this.state = {};
@@ -315,12 +315,12 @@ export default class TestChart extends Component {
 
   render() {
     return (
-      <StyledComponent styleMap={TestChartStyle}>
+      <StyledComponent styleMap={BarChartStyle}>
         {(useStyles) => {
           const classes = useStyles(this.props);
           return (
             <div className={classes.main}>
-              <h1 className={classes.header}>Test Chart</h1>
+              <h1 className={classes.header}>Bar Chart</h1>
               <div className={classes.main_canvas}>
                 <canvas
                   resize="true"

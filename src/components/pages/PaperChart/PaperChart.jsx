@@ -4,6 +4,8 @@ import StyledComponent from '../../core/StyledComponent';
 
 import paper, { Shape } from 'paper';
 import TestChart from './Charts/TestChart/TestChart';
+import BarChart from './Charts/BarChart/BarChart';
+import LineChart from './Charts/LineChart/LineChart';
 
 // import Button from '@material-ui/core/Button';
 
@@ -32,9 +34,12 @@ export default class PaperChart extends Component {
           const classes = useStyles(this.props);
           return (
             <div className={classes.main}>
-              <h1 className={classes.header}>Paper Chart</h1>
+              <h1 className={classes.header}>
+                <span className={classes.gradientText}>Paper Chart</span>
+              </h1>
               <div className={classes.charts_containter}>
-                <TestChart></TestChart>
+                <BarChart></BarChart>
+                <LineChart></LineChart>
               </div>
               {/* <div className={classes.main_canvas}>
                 <canvas

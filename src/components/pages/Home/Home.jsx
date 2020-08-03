@@ -16,9 +16,23 @@ import snowflakeGeneratorGif from '../../../static/images/Cards/snowflake-gen.gi
 import gameOfLifeGif from '../../../static/images/Cards/game_of_life.gif';
 import pathfindGif from '../../../static/images/Cards/visual-pathfind.gif';
 import pixelPainterGif from '../../../static/images/Cards/pixel_painter.gif';
+import paperChartGif from '../../../static/images/Cards/paper-chart.gif';
 import constructionImg from '../../../static/images/Cards/construction.png';
 
 import { Redirect } from 'react-router-dom';
+
+const color = {
+  cyan: { light: '#1ABC9C', dark: '#16A085' },
+  green: { light: '#2ECC71', dark: '#27AE60' },
+  blue: { light: '#3498DB', dark: '#2980B9' },
+  purple: { light: '#9B59B6', dark: '#8E44AD' },
+  midnight: { light: '#34495E', dark: '#2C3E50' },
+  yellow: { light: '#F1C40F', dark: '#F39C12' },
+  orange: { light: '#E67E22', dark: '#D35400' },
+  red: { light: '#E74C3C', dark: '#C0392B' },
+  cloud: { light: '#ECF0F1', dark: '#BDC3C7' },
+  grey: { light: '#95A5A6', dark: '#7F8C8D' },
+};
 
 // Pravda vítězí
 export default class Home extends Component {
@@ -54,6 +68,21 @@ export default class Home extends Component {
           return (
             <div className={classes.main}>
               <h1 className={classes.header}>Playground</h1>
+              <p
+                style={{
+                  position: 'absolute',
+                  top: '10px',
+                  right: '20px',
+                  fontSize: '14px',
+                  backgroundColor: color.grey.dark,
+                  color: color.cloud.light,
+                  padding: '2px 5px',
+                  borderRadius: '5px',
+                  lineHeight: '18px',
+                }}
+              >
+                v 0.0.5
+              </p>
               <ul className={classes.stage_select_list}>
                 <li className={classes.stage_select_list_item}>
                   <Card className={classes.root}>
@@ -80,6 +109,21 @@ export default class Home extends Component {
                         </Typography>
                         <Typography variant="body2" color="textSecondary" component="p">
                           Explore and interact with different sorting algorithms. See how they work.
+                        </Typography>
+                      </CardContent>
+                    </CardActionArea>
+                  </Card>
+                </li>
+                <li className={classes.stage_select_list_item}>
+                  <Card className={classes.root}>
+                    <CardActionArea onClick={() => this.routeChange('/chart')}>
+                      <CardMedia component="img" className={classes.media} src={paperChartGif} />
+                      <CardContent>
+                        <Typography gutterBottom variant="h5" component="h2">
+                          Paper Chart
+                        </Typography>
+                        <Typography variant="body2" color="textSecondary" component="p">
+                          Under construction
                         </Typography>
                       </CardContent>
                     </CardActionArea>
@@ -181,22 +225,6 @@ export default class Home extends Component {
                 </li>
                 <li className={classes.stage_select_list_item}>
                   <Card className={classes.root}>
-                    <CardActionArea onClick={() => this.routeChange('/chart')}>
-                      <CardMedia component="img" className={classes.media} src={contemplativeReptile} />
-                      <CardMedia component="img" className={classes.construction_layer} src={constructionImg} />
-                      <CardContent>
-                        <Typography gutterBottom variant="h5" component="h2">
-                          Paper Chart
-                        </Typography>
-                        <Typography variant="body2" color="textSecondary" component="p">
-                          Under construction
-                        </Typography>
-                      </CardContent>
-                    </CardActionArea>
-                  </Card>
-                </li>
-                <li className={classes.stage_select_list_item}>
-                  <Card className={classes.root}>
                     <CardActionArea onClick={() => this.routeChange('/style-md')}>
                       <CardMedia component="img" className={classes.media} src={contemplativeReptile} />
                       <CardMedia component="img" className={classes.construction_layer} src={constructionImg} />
@@ -244,6 +272,7 @@ export default class Home extends Component {
                   </Card>
                 </li>
               </ul>
+              <div className={classes.footer}></div>
             </div>
           );
         }}

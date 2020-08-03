@@ -7,7 +7,7 @@ const styles = {
     marginTop: '30px',
     width: '600px',
     backgroundColor: defaultBackgroundColor,
-    border: '1px solid #DDDDDD',
+    border: '1px solid white',
     borderRadius: 0,
   },
   header: {
