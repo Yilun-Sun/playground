@@ -81,7 +81,7 @@ export default class Home extends Component {
                   lineHeight: '18px',
                 }}
               >
-                v 0.0.5
+                v 0.1.1
               </p>
               <ul className={classes.stage_select_list}>
                 <li className={classes.stage_select_list_item}>
@@ -263,6 +263,22 @@ export default class Home extends Component {
                       <CardContent>
                         <Typography gutterBottom variant="h5" component="h2">
                           Risk Game Map Editor
+                        </Typography>
+                        <Typography variant="body2" color="textSecondary" component="p">
+                          Under construction
+                        </Typography>
+                      </CardContent>
+                    </CardActionArea>
+                  </Card>
+                </li>
+                <li className={classes.stage_select_list_item}>
+                  <Card className={classes.root}>
+                    <CardActionArea onClick={() => this.routeChange('/tanky')}>
+                      <CardMedia component="img" className={classes.media} src={contemplativeReptile} />
+                      <CardMedia component="img" className={classes.construction_layer} src={constructionImg} />
+                      <CardContent>
+                        <Typography gutterBottom variant="h5" component="h2">
+                          Tanky
                         </Typography>
                         <Typography variant="body2" color="textSecondary" component="p">
                           Under construction

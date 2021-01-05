@@ -243,6 +243,7 @@ export default class LineChart extends Component {
         multiLevel >= 1
           ? gridDistance * multiLevel * i
           : (gridDistance * multiLevel * i).toFixed(multiLevel.toString().split('.')[1].length);
+      text.content = text.content + '℃';
 
       const line_from = new Point(
         offsetMark - smallMarkLength,

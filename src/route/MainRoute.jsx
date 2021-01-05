@@ -14,6 +14,7 @@ import SnowflakeGen from '../components/pages/SnowflakeGen/SnowflakeGen';
 import SnowflakePainter from '../components/pages/SnowflakePainter/SnowflakePainter';
 import PaperChart from '../components/pages/PaperChart/PaperChart';
 import StyledMarkdown from '../components/pages/StyledMarkdown/StyledMarkdown';
+import Tanky from '../components/pages/Tanky/Tanky';
 
 const MainRoute = () => (
   <div>
@@ -55,8 +56,11 @@ const MainRoute = () => (
       <Route path="/style-md">
         <StyledMarkdown />
       </Route>
-      <Route exact path="/chart" component={PaperChart}></Route>
-      <Route path="/">
+      <Route path="/tanky">
+        <Tanky />
+      </Route>
+      <Route path="/chart" component={PaperChart}></Route>
+      <Route exact path="/">
         <Redirect to="/playground" />
       </Route>
     </Switch>

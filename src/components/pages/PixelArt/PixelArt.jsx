@@ -122,8 +122,8 @@ export default class PixelArt extends Component {
     // const canvasWidth = this.canvas.width;
     // const canvasHeight = this.canvas.height;
     const nodeSize = this.nodeSize;
-    const currentRow = Math.floor(currentY / nodeSize);
-    const currentCol = Math.floor(currentX / nodeSize);
+    const currentRow = Math.floor(currentY / nodeSize) + 1;
+    const currentCol = Math.floor(currentX / nodeSize) + 1;
     // const brush = this.brush;
 
     var rect = new Shape.Rectangle({

@@ -674,7 +674,7 @@ export default class PathFind extends Component {
                       Grid
                     </Button>
                   </ListItem>
-                  <ListItem>
+                  {/* <ListItem>
                     <Button variant="outlined" onClick={() => this.setBrush('start')}>
                       start
                     </Button>
@@ -688,7 +688,7 @@ export default class PathFind extends Component {
                     <Button variant="outlined" onClick={() => this.setBrush('wall')}>
                       wall
                     </Button>
-                  </ListItem>
+                  </ListItem> */}
                   <ListItem>
                     <Button variant="outlined" onClick={() => this.initCanvas()}>
                       reset
@@ -713,11 +713,6 @@ export default class PathFind extends Component {
                       </ExpansionPanelDetails>
                     </ExpansionPanel>
                   </ListItem> */}
-                  <ListItem>
-                    <Button variant="outlined" onClick={() => this.test1()}>
-                      Props
-                    </Button>
-                  </ListItem>
                   <ListItem>
                     <div>
                       <Button variant="outlined" color="primary" onClick={this.handleClickOpen}>
@@ -749,11 +744,11 @@ export default class PathFind extends Component {
                       </Dialog>
                     </div>
                   </ListItem>
-                  <ListItem>
+                  {/* <ListItem>
                     <Button variant="outlined" onClick={() => this.test2()}>
                       TEST2
                     </Button>
-                  </ListItem>
+                  </ListItem> */}
                 </List>
               </div>
               <div className={styles.main_canvas}>
